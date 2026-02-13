@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELITE FF SQUAD PORTAL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap');
+
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --bg-dark: #050505;
+            --error-red: #ff4b2b;
+            --success-green: #00ffcc;
+        }
+
+        body {
+            margin: 0; background: var(--bg-dark); color: white;
+            font-family: 'Rajdhani', sans-serif; display: flex; justify-content: center;
+            background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050505 100%);
+        }
+
+        .container { width: 95%; max-width: 550px; padding: 20px; }
+
+        @keyframes cyberFade {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .page { 
+            display: none; background: rgba(10, 10, 10, 0.98); padding: 30px; 
+            border-radius: 0 40px 0 40px; border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
+            animation: cyberFade 0.4s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .active { display: block; }
+
+        h2 { 
+            font-family: 'Orbitron', sans-serif; text-align: center; 
+            color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue);
+            text-transform: uppercase; letter-spacing: 3px;
+        }
+
+        .terms-content {
+            height: 300px; overflow-y: scroll; background: rgba(0,0,0,0.7);
+            padding: 20px; border: 1px solid #333; font-size: 13px;
+            margin-bottom: 20px; color: #ddd; line-height: 1.7;
+            border-left: 3px solid var(--neon-purple);
+            text-align: justify;
+        }
+
+        .terms-content b { color: var(--neon-blue); display: block; margin-top: 10px; }
+
+        .checkbox-container {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+            font-family: 'Orbitron'; font-size: 11px; color: var(--neon-blue);
+        }
+
+        .data-block {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid #333; 
+            padding: 20px 15px 10px; border-radius: 8px; position: relative; 
+            border-left: 4px solid var(--neon-purple); margin-bottom: 25px;
+        }
+
+        .data-block::before {
+            content: attr(data-label); position: absolute; top: -12px; left: 10px;
+            background: var(--neon-purple); color: white; padding: 2px 12px; 
+            font-size: 11px; font-family: 'Orbitron'; border-radius: 3px;
+        }
+
+        input {
+            width: 100%; background: #000; border: 1px solid #444;
+            padding: 10px; color: white; margin-bottom: 10px;
+            font-family: 'Rajdhani'; box-sizing: border-box; border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: var(--neon-blue); outline: none; }
+        
+        /* Validation Visual Feedback */
+        input:focus:invalid { border-color: var(--error-red); }
+        input:valid:not(:placeholder-shown) { border-color: var(--success-green); }
+
+        .btn-pro {
+            width: 100%; padding: 18px; background: var(--neon-blue);
+            color: black; font-family: 'Orbitron'; font-weight: bold;
+            border: none; clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+            cursor: pointer; transition: 0.3s; text-decoration: none;
+            display: block; text-align: center; box-sizing: border-box;
+        }
+
+        .btn-pro:disabled { background: #333; color: #666; cursor: not-allowed; clip-path: none; }
+
+        .match-btn {
+            background: #111; border: 1px solid #333; padding: 20px;
+            margin-bottom: 15px; border-radius: 10px; cursor: pointer; transition: 0.3s;
+        }
+
+        .match-btn:hover { border-color: var(--neon-blue); transform: scale(1.02); }
+
+        .prize-line { font-size: 14px; margin-top: 8px; font-family: 'Orbitron'; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="page-welcome" class="page active" style="text-align:center;">
+        <h2 style="margin-bottom:10px;">BOOYAH LOBBY</h2>
+        <p style="color:#888; margin-bottom:30px;">ESPORTS PORTAL 2026</p>
+        <button onclick="showPage('page-terms')" class="btn-pro">ENTER TOURNAMENT</button>
+    </div>
+
+    <div id="page-terms" class="page">
+        <h2>OFFICIAL RULES</h2>
+        <div class="terms-content">
+            <b>1. ELIGIBILITY & AGE</b>
+            All participants must be at least Level 40 and have reached Platinum rank or higher. Any player found using a lower-ranked "smurf" account will be disqualified.
+            
+            <b>2. ANTI-HACK & FAIR PLAY</b>
+            The use of authorized third-party programs, scripts, or any software modifying game data is strictly prohibited. Garena’s anti-cheat system will be active. Use of skin MODS or modified .glp files results in a permanent ban.
+            
+            <b>3. DEVICE RESTRICTIONS</b>
+            Only smartphones (iOS/Android) are allowed. Emulators, iPads, Tablets, and external triggers/macros are forbidden. Any team found with an emulator player will be DQ'd instantly.
+            
+            <b>4. CODE OF CONDUCT</b>
+            Zero tolerance for toxic behavior, hate speech, or harassment. Teaming (collusion) between different squads is a serious offense and leads to an immediate zero-point score for the tournament.
+            
+            <b>5. GAMEPLAY PROTOCOL</b>
+            Players must join the lobby 10 minutes before the start time. Use of grenades and specific character skills must follow the match day restrictions provided in the Telegram briefing.
+            
+            <b>6. TECHNICAL ISSUES</b>
+            Matches will not be restarted for individual player disconnections or lag. A restart will only occur if the room server crashes for all participants.
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="acceptTerms" style="width:18px; height:18px;" onchange="toggleTermsBtn()">
+            <label for="acceptTerms">I AGREE TO THE OFFICIAL 2026 RULES</label>
+        </div>
+        <button id="termsBtn" onclick="showPage('page-select')" class="btn-pro" disabled>ACCEPT & PROCEED</button>
+    </div>
+
+    <div id="page-select" class="page">
+        <h2>SELECT MATCH</h2>
+        
+        <div class="match-btn" onclick="openForm('Daily', '₹500', '₹300', '₹150')">
+            <h3 style="color:var(--neon-blue); margin:0;">DAILY SCRIMS</h3>
+            <p style="margin:5px 0 0; color:#ff4b2b; font-weight:bold;">FEE: ₹100</p>
+            <div class="prize-line" style="color:#00ffcc;">🏆 1st: ₹500 | 🥈 2nd: ₹300</div>
+        </div>
+
+        <div class="match-btn" onclick="openForm('Weekly', '₹2000', '₹1600', '₹800')">
+            <h3 style="color:var(--neon-blue); margin:0;">WEEKLY CUP</h3>
+            <p style="margin:5px 0 0; color:#ff4b2b; font-weight:bold;">FEE: ₹800</p>
+            <div class="prize-line" style="color:#00ffcc;">🏆 1st: ₹2000 | 🥈 2nd: ₹1600</div>
+        </div>
+
+        <div class="match-btn" onclick="openForm('Monthly', '₹5000', '₹3000', '₹1500')">
+            <h3 style="color:var(--neon-blue); margin:0;">MONTHLY PRO</h3>
+            <p style="margin:5px 0 0; color:#ff4b2b; font-weight:bold;">FEE: ₹1500</p>
+            <div class="prize-line" style="color:#00ffcc;">🏆 1st: ₹5000 | 🥈 2nd: ₹3000</div>
+        </div>
+    </div>
+
+    <div id="page-form" class="page">
+        <h2 id="match-title">SQUAD REGISTRY</h2>
+        <form id="squadForm">
+            <div class="data-block" data-label="TEAM LEAD">
+                <input type="text" id="teamName" placeholder="Team Name" required>
+                <input type="tel" id="mainContact" placeholder="WhatsApp No. (10 Digits)" pattern="[0-9]{10}" title="Please enter exactly 10 digits" required>
+                <input type="email" id="mainEmail" placeholder="Official Gmail ID" pattern=".+@gmail\.com" title="Please use a valid @gmail.com address" required>
+            </div>
+            <div id="player-container"></div>
+            <button type="submit" id="subBtn" class="btn-pro">CONFIRM SQUAD</button>
+        </form>
+    </div>
+
+    <div id="page-success" class="page" style="text-align:center;">
+        <h2 style="color:var(--neon-purple)">MISSION LOGGED</h2>
+        <p>Registration complete. Your data has been sent to the admin group.</p>
+        <a href="https://t.me/freefire_tornament1" class="btn-pro" style="background:#229ED9; clip-path:none; border-radius:8px;">JOIN TELEGRAM</a>
+    </div>
+</div>
+
+<script>
+    const CONFIG = {
+        token: "8538911983:AAF7iEPqQKAKK8AX7rBofMwmb0M7oqGIdro",
+        chatId: "8378459530"
+    };
+
+    function toggleTermsBtn() {
+        document.getElementById('termsBtn').disabled = !document.getElementById('acceptTerms').checked;
+    }
+
+    const container = document.getElementById('player-container');
+    for(let i=1; i<=4; i++) {
+        container.innerHTML += `
+            <div class="data-block" data-label="PLAYER ${i}">
+                <input type="text" class="p-name" placeholder="In-Game Name" required>
+                <input type="text" class="p-uid" placeholder="Player UID" required>
+            </div>`;
+    }
+
+    function showPage(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    let selectedMatch = "", selectedPrize = "", selectedFee = "";
+
+    function openForm(type, p1, p2, fee) {
+        selectedMatch = type;
+        selectedPrize = `1st: ${p1}, 2nd: ${p2}`;
+        selectedFee = fee;
+        document.getElementById('match-title').innerText = type.toUpperCase() + " SQUAD";
+        showPage('page-form');
+    }
+
+    document.getElementById('squadForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('subBtn');
+        btn.innerText = "TRANSMITTING..."; btn.disabled = true;
+
+        const team = document.getElementById('teamName').value;
+        const contact = document.getElementById('mainContact').value;
+        const email = document.getElementById('mainEmail').value;
+        const names = document.querySelectorAll('.p-name'), uids = document.querySelectorAll('.p-uid');
+
+        let squadRoster = "";
+        for(let i=0; i<4; i++) {
+            squadRoster += `👤 P${i+1}: ${names[i].value} | ID: ${uids[i].value}\n`;
+        }
+
+        const message = `🔥 *OFFICIAL FF ENTRY* 🔥\n\n` +
+                        `📜 *Terms Accepted: YES*\n` +
+                        `🏆 *Match:* ${selectedMatch}\n` +
+                        `💰 *Fee:* ${selectedFee}\n\n` +
+                        `🛡️ *Team:* ${team}\n` +
+                        `📞 *Contact:* ${contact}\n` +
+                        `📧 *Email:* ${email}\n\n` +
+                        `📋 *ROSTER:*\n${squadRoster}`;
+
+        try {
+            await fetch(`https://api.telegram.org/bot${CONFIG.token}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: CONFIG.chatId, text: message, parse_mode: "Markdown" })
+            });
+            showPage('page-success');
+        } catch (err) {
+            alert("NETWORK ERROR!"); btn.disabled = false; btn.innerText = "CONFIRM SQUAD";
+        }
+    });
+</script>
+</body>
+</html>
